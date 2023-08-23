@@ -17,6 +17,10 @@ function main() {
 
         , en = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+    let checkedBtn = false
+        , uncheckedBtn = false
+        , checkedItemsIndex = []
+
     function makeTodoElelemnt(todoArray) {
         if (!todoArray)
             return null;
@@ -37,6 +41,7 @@ function main() {
         }
 
     };
+
     function htmlTags(todoName) {
         const li = document.createElement('li')
             , remvoebtn = document.createElement('button')
@@ -86,11 +91,12 @@ function main() {
                 parent.remove()
             }, 250)
             localStorage.setItem('todos', JSON.stringify(todos))
-
             pcses()
         });
-        if (checkedBtn) {
+        if (checkedBtn && !checkBoxBtn.children[0].classList.contains('fa-check')) {
             li.classList.remove('allItem')
+            li.classList.remove('filterChecked')
+            li.classList.remove('checked')
         }
         checkBoxBtn.addEventListener('click', () => {
             let todos = JSON.parse(localStorage.getItem('todos'))
@@ -100,11 +106,18 @@ function main() {
             checkBoxBtn.children[0].classList.toggle('fa-check')
             if (checkBoxBtn.children[0].classList.contains('fa-check')) {
                 candation = true
-                parent.classList.add('checked')
+                li.classList.add('checked')
             } else {
                 candation = false
-                parent.classList.remove('checked')
+                li.classList.remove('checked')
             };
+            if (uncheckedBtn) {
+                li.classList.remove('allItem')
+                li.classList.remove('filterUnchecked')
+            } if (checkedBtn && !checkBoxBtn.children[0].classList.contains('fa-check')) {
+                li.classList.remove('allItem')
+                li.classList.remove('filterChecked')
+            }
             todos[indexCheckElement].isComplate = candation
             localStorage.setItem('todos', JSON.stringify(todos))
             pcses()
@@ -117,6 +130,7 @@ function main() {
             pcsOfComplatedTodos.textContent = '';
             return;
         };
+
         const check = document.querySelectorAll('.checkBox i')
         let index = 0
 
@@ -136,6 +150,9 @@ function main() {
         }
         pcsOfTodos.textContent = 'تعدا فعالیت ها : ' + todosArr.length;
         pcsOfComplatedTodos.textContent = 'تعداد انجام شده ها : ' + index;
+        // if(todosArr.length === index){
+
+        // }
     };
     function removeComplatedTodo(indexes) {
         let todos = JSON.parse(localStorage.getItem('todos'))
@@ -144,9 +161,7 @@ function main() {
         })
         localStorage.setItem('todos', JSON.stringify(todos))
     }
-    let checkedBtn = false
-        , uncheckedBtn = false
-        , checkedItemsIndex = []
+
     makeTodoElelemnt(JSON.parse(localStorage.getItem('todos')));
     pcses();
 
@@ -218,7 +233,7 @@ function main() {
             }
         }
     });
-    if (navigator.platform === 'Win32') {
+    if (navigator.platform !== 'Win32') {
         let span = document.createElement('span')
         span.textContent = '(در دوایس شما این قابلیت کار نمی کند!!!)';
         onlyPc.parentElement.appendChild(span)
@@ -232,10 +247,12 @@ function main() {
     }
 
     allItem.addEventListener('click', () => {
+        const items = [...document.querySelectorAll('.item')]
+        if (!items)
+            return
         checkedBtn = false
         uncheckedBtn = false
         let parent = allItem.parentElement
-        const items = [...document.querySelectorAll('.item')]
         for (let index = 0; index < parent.children.length; index++) {
             parent.children[index].classList.remove('active')
         }
@@ -247,9 +264,11 @@ function main() {
         allItem.classList.add('active')
     })
     checkedItem.addEventListener('click', () => {
+        let todos = JSON.parse(localStorage.getItem('todos'))
+        if (!todos)
+            return
         checkedBtn = true
         uncheckedBtn = false
-        let todos = JSON.parse(localStorage.getItem('todos'))
         const items = [...document.querySelectorAll('.item')]
         todos.forEach((item, index) => {
             items[index].classList.remove('allItem')
@@ -260,24 +279,16 @@ function main() {
         });
         clearClasses()
         checkedItem.classList.add('active')
+
     })
-    clearCheckedItems.addEventListener('click', () => {
-        let deletedItem = [];
-        document.querySelectorAll('.item.checked').forEach((item) => {
-            deletedItem.push([...document.querySelectorAll('.item')].indexOf(item))
-            item.style = 'animation:uls 0.3s ease-in'
-            item.addEventListener('animationend', () => {
-                item.remove()
-            })
-        });
-        removeComplatedTodo(deletedItem);
-        pcses();
-    });
+
     ubCheckedItem.addEventListener('click', () => {
+        let todos = JSON.parse(localStorage.getItem('todos'));
+        if (!todos)
+            return
         checkedBtn = false
         uncheckedBtn = true
         clearClasses();
-        let todos = JSON.parse(localStorage.getItem('todos'));
         const items = [...document.querySelectorAll('.item')]
         todos.forEach((item, index) => {
             items[index].classList.remove('allItem');
@@ -290,6 +301,18 @@ function main() {
         });
         ubCheckedItem.classList.add('active');
 
+    });
+    clearCheckedItems.addEventListener('click', () => {
+        let deletedItem = [];
+        document.querySelectorAll('.item.checked').forEach((item) => {
+            deletedItem.push([...document.querySelectorAll('.item')].indexOf(item))
+            item.style = 'animation:uls 0.3s ease-in'
+            item.addEventListener('animationend', () => {
+                item.remove()
+            })
+        });
+        removeComplatedTodo(deletedItem);
+        pcses();
     });
 }
 
