@@ -3,7 +3,6 @@
   src: url("../font/Vazir.ttf") format("truetype");
   src: url("../font/Vazir.woff") format("woff");
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -196,7 +195,6 @@ body.dark {
   align-items: center;
   background-color: var(--backGroundTodos);
   overflow-y: auto;
-  text-align: justify;
   color: var(--itemsColor);
   font-size: 1.3em;
   animation: down 0.3s ease-in;
