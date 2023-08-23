@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>تنظیم کار ها</title>
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <div class="backgroundDiv">
+          <button class="switcher">
+            <i class="fa fa-moon"></i>
+          </button>
+        </div>
+        <div class="todoConatiner">
+          <div class="addTodoContainer">
+            <div class="tools">
+              <div>
+                <span class="fa fa-trash-can trash"></span>
+                <span class="allItem active">همه</span>
+                <span class="checkedItem">تکمیل</span>
+                <span class="ubCheckedItem">باقی مانده</span>
+              </div>
+            </div>
+            <button class="addTodo">
+              <i class="fa fa-plus"></i>
+            </button>
+            <input
+              placeholder="فعالیت خود را اینجا وارد کنید"
+              type="text"
+              class="nameTodo"
+            />
+          </div>
+          <ul class="TodosContentContaner"></ul>
+          <div class="todosInfo">
+            <p class="pcsOfTodos"></p>
+            <p class="pcsOfComplatedTodos"></p>
+          </div>
+        </div>
+        <footer>
+          <p class="onlyPc">برای تغیر مکان فعالیت بکشید ; Drag and Drop</p>
+        </footer>
+      </section>
+    </main>
+    <script src="javascriptFiles/javas.js"></script>
+  </body>
+</html>
