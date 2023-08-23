@@ -203,12 +203,12 @@ function main() {
     });
 
     nameTodo.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            addTodo.click()
+        }
         for (let index = 0; index < en.length; index++) {
             if (nameTodo.value.trim()[0] === en[index] || nameTodo.value.trim()[0] === en[index].toUpperCase()) {
                 nameTodo.dir = 'ltr';
-                if (e.key === 'Enter') {
-                    addTodo.click()
-                }
                 return
             }
         };
