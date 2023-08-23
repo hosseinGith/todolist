@@ -15,7 +15,7 @@ function main() {
 
         , clearCheckedItems = document.querySelector('.trash')
 
-        , en = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        , en = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
     function makeTodoElelemnt(todoArray) {
         if (!todoArray)
@@ -32,8 +32,8 @@ function main() {
                 if (check[index].classList.contains('fa-check')) {
                     candation = true
                     check[index].parentElement.parentElement.classList.add('checked')
-                }
-            }
+                };
+            };
         }
 
     };
@@ -104,7 +104,7 @@ function main() {
             } else {
                 candation = false
                 parent.classList.remove('checked')
-            }
+            };
             todos[indexCheckElement].isComplate = candation
             localStorage.setItem('todos', JSON.stringify(todos))
             pcses()
@@ -206,7 +206,6 @@ function main() {
         for (let index = 0; index < en.length; index++) {
             if (nameTodo.value.trim()[0] === en[index] || nameTodo.value.trim()[0] === en[index].toUpperCase()) {
                 nameTodo.dir = 'ltr';
-                console.log(e.type);
                 if (e.key === 'Enter') {
                     addTodo.click()
                 }
@@ -270,28 +269,28 @@ function main() {
             item.addEventListener('animationend', () => {
                 item.remove()
             })
-        })
-
-        removeComplatedTodo(deletedItem)
-    })
+        });
+        removeComplatedTodo(deletedItem);
+        pcses();
+    });
     ubCheckedItem.addEventListener('click', () => {
         checkedBtn = false
         uncheckedBtn = true
-        clearClasses()
-        let todos = JSON.parse(localStorage.getItem('todos'))
+        clearClasses();
+        let todos = JSON.parse(localStorage.getItem('todos'));
         const items = [...document.querySelectorAll('.item')]
         todos.forEach((item, index) => {
-            items[index].classList.remove('allItem')
-            items[index].classList.remove('filterChecked')
+            items[index].classList.remove('allItem');
+            items[index].classList.remove('filterChecked');
 
             if (todos[index].isComplate === false) {
-                checkedItemsIndex.push(index)
-                items[index].classList.add('filterUnchecked')
+                checkedItemsIndex.push(index);
+                items[index].classList.add('filterUnchecked');
             }
         });
-        ubCheckedItem.classList.add('active')
+        ubCheckedItem.classList.add('active');
 
-    })
+    });
 }
 
 document.addEventListener('DOMContentLoaded', main)
