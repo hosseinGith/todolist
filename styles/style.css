@@ -8,7 +8,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  cursor: default;
 }
 
 :root {
@@ -199,7 +198,12 @@ body.dark {
   overflow-y: auto;
   text-align: justify;
   color: var(--itemsColor);
+  font-size: 1.3em;
   animation: down 0.3s ease-in;
+  cursor: crosshair;
+}
+.item:active{
+  cursor: crosshair;
 }
 @keyframes uls {
   100% {
@@ -213,12 +217,11 @@ body.dark {
     opacity: 0.2;
   }
 }
-.item.allItem {
-  display: flex;
+.item.checked {
+  text-decoration: line-through;
 }
-.item.filterChecked {
-  display: flex;
-}
+.item.allItem ,
+.item.filterChecked,
 .item.filterUnchecked {
   display: flex;
 }
@@ -240,7 +243,7 @@ body.dark {
 .item .remvoeTodo {
   left: 30px;
   font-weight: 0;
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 
 .item .remvoeTodo i {
