@@ -85,8 +85,8 @@ body.dark {
 .backgroundDiv button {
   position: absolute;
   background-color: transparent;
-  left: 50px;
-  top: 30px;
+  left: 20px;
+  top: 5%;
   border: 0;
   font-size: 2em;
   color: var(--fontColor);
@@ -95,7 +95,7 @@ body.dark {
 .todoConatiner {
   padding: 10px;
   width: 86%;
-  height: 400px;
+  height: 55%;
   top: 50%;
   left: 50%;
   border-radius: 1.5em;
@@ -114,7 +114,31 @@ body.dark {
   align-items: center;
   gap: 10px;
 }
+.tools {
+  border-radius: 20px;
+  width: 100%;
+  padding: 6px 0;
+  top: -50px;
+  right: 50%;
+  translate: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  box-shadow: var(--boxShadow);
+  background-color: var(--backGroundTodoConta);
+}
 
+.tools span {
+  width: max-content;
+  border: 0;
+  padding: 3px 20px;
+  background-color: transparent;
+  color: var(--fontColor);
+  font-size: 1em;
+  cursor: pointer;
+  white-space: nowrap;
+}
 .addTodoContainer .nameTodo {
   width: 100%;
   outline: 0;
@@ -151,7 +175,7 @@ body.dark {
 
 .TodosContentContaner {
   width: 100%;
-  height: 77%;
+  height: 100%;
   padding: 10px 30px;
   border: 3px solid var(--borderTodo);
   gap: 10px;
@@ -249,41 +273,15 @@ body.dark {
 }
 
 .todosInfo {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.tools {
-  border-radius: 20px;
-  width: 100%;
-  padding: 6px 0;
-  top: -50px;
-  right: 50%;
-  translate: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  box-shadow: var(--boxShadow);
-  background-color: var(--backGroundTodoConta);
-}
-
-.tools span {
-  width: max-content;
-  border: 0;
-  padding: 3px 20px;
-  background-color: transparent;
-  color: var(--fontColor);
-  font-size: 1em;
-  cursor: pointer;
-  white-space: nowrap;
-}
 span.trash {
   font-size: 1.5em;
 }
-.tools span::not(span.trush):hover {
+.tools span::not(.trush):hover {
   color: var(--activeColor);
   opacity: 0.8;
 }
