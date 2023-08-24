@@ -285,6 +285,7 @@ button.trash {
 .tools button{
   background:transparent;
   border:0;
+	color:var(--fontColor) ;
  } 
 .tools button::not(.trush):hover {
   color: var(--activeColor);
