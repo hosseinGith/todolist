@@ -282,6 +282,10 @@ body.dark {
 button.trash {
   font-size: 1.5em;
 }
+.tools button{
+  background:transparent;
+  border:0;
+ } 
 .tools button::not(.trush):hover {
   color: var(--activeColor);
   opacity: 0.8;
