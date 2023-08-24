@@ -279,15 +279,15 @@ body.dark {
   justify-content: space-evenly;
 }
 
-span.trash {
+button.trash {
   font-size: 1.5em;
 }
-.tools span::not(.trush):hover {
+.tools button::not(.trush):hover {
   color: var(--activeColor);
   opacity: 0.8;
 }
 
-.tools span:active {
+.tools button:active {
   color: var(--activeColor);
   opacity: 0.5;
 }
@@ -296,7 +296,7 @@ span.trash {
   display: flex;
   justify-content: space-evenly;
 }
-.tools > div span.active {
+.tools > div button.active {
   color: var(--activeColor);
   font-weight: 1000;
   word-wrap: break-word;
