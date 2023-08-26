@@ -220,7 +220,7 @@ function main() {
         if (e.key === 'Enter') {
             addTodo.click()
         }
-        if(!nameTodo.value)
+        if (!nameTodo.value)
             nameTodo.dir = 'rtl'
         else
             nameTodo.dir = 'auto'
