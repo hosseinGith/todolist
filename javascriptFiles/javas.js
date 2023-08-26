@@ -15,7 +15,6 @@ function main() {
 
         , clearCheckedItems = document.querySelector('.trash')
 
-        , en = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
     let checkedBtn = false
         , uncheckedBtn = false
@@ -221,17 +220,10 @@ function main() {
         if (e.key === 'Enter') {
             addTodo.click()
         }
-        for (let index = 0; index < en.length; index++) {
-            if (nameTodo.value.trim()[0] === en[index] || nameTodo.value.trim()[0] === en[index].toUpperCase()) {
-                nameTodo.dir = 'ltr';
-                return
-            }
-        };
-        for (let index = 0; index < en.length; index++) {
-            if (nameTodo.value.trim()[0] !== en[index]) {
-                nameTodo.dir = 'rtl';
-            }
-        }
+        if(!nameTodo.value)
+            nameTodo.dir = 'rtl'
+        else
+            nameTodo.dir = 'auto'
     });
     if (navigator.platform !== 'Win32') {
         let span = document.createElement('span')
@@ -315,5 +307,4 @@ function main() {
         pcses();
     });
 }
-
 document.addEventListener('DOMContentLoaded', main)
