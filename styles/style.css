@@ -3,6 +3,7 @@
   src: url("../font/Vazir.ttf") format("truetype");
   src: url("../font/Vazir.woff") format("woff");
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -127,7 +128,7 @@ body.dark {
   background-color: var(--backGroundTodoConta);
 }
 
-.tools span {
+.tools button {
   width: max-content;
   border: 0;
   padding: 3px 20px;
@@ -195,12 +196,13 @@ body.dark {
   align-items: center;
   background-color: var(--backGroundTodos);
   overflow-y: auto;
+  text-align: justify;
   color: var(--itemsColor);
   font-size: 1.3em;
   animation: down 0.3s ease-in;
   cursor: crosshair;
 }
-.item:active{
+.item:active {
   cursor: crosshair;
 }
 @keyframes uls {
@@ -218,7 +220,7 @@ body.dark {
 .item.checked {
   text-decoration: line-through;
 }
-.item.allItem ,
+.item.allItem,
 .item.filterChecked,
 .item.filterUnchecked {
   display: flex;
@@ -282,11 +284,6 @@ body.dark {
 button.trash {
   font-size: 1.5em;
 }
-.tools button{
-  background:transparent;
-  border:0;
-	color:var(--fontColor) ;
- } 
 .tools button::not(.trush):hover {
   color: var(--activeColor);
   opacity: 0.8;
@@ -304,6 +301,7 @@ button.trash {
 .tools > div button.active {
   color: var(--activeColor);
   font-weight: 1000;
+  font-size: 1.2em;
   word-wrap: break-word;
 }
 
